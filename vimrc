@@ -132,6 +132,7 @@ set foldmethod=manual
 set foldopen-=undo      " don't open folds when you undo stuff
 
 autocmd FileType c,h,cpp,hpp setl cindent ts=4 sts=4 sw=4 noet lcs+=tab:\ \ 
+autocmd FileType asm setl ts=8 sts=8 sw=8 noet lcs+=tab:\ \ 
 autocmd FileType go setl ts=4 sts=4 sw=4 noet lcs+=tab:\ \ 
 autocmd FileType python setl ts=3 sts=3 sw=3
 autocmd FileType make,automake setl ts=4 sts=4 sw=4 noet lcs+=tab:\ \ 
