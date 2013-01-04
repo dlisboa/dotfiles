@@ -45,6 +45,10 @@ Bundle 'edsono/vim-matchit'
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'kana/vim-textobj-user'
 
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-rails'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+
  " automatically close quotes
 Bundle 'Raimondi/delimitMate'
 Bundle 'tpope/vim-endwise'
@@ -61,19 +65,19 @@ Bundle 'sickill/vim-pasta'
 Bundle 'vim-scripts/bufkill.vim'
 Bundle 'kien/ctrlp.vim'
 
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-rails'
-Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'bbommarito/vim-slim'
 
 Bundle 'puppetlabs/puppet-syntax-vim'
 
 Bundle 'gcatlin/go-vim'
+"Bundle 'klen/python-mode'
+Bundle 'derekwyatt/vim-scala'
 
 Bundle 'vim-scripts/slimv.vim'
 
 Bundle 'flazz/vim-colorschemes'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'jpo/vim-railscasts-theme'
 
 "Bundle 'msanders/snipmate.vim'
 
@@ -115,7 +119,6 @@ set list
 set listchars=eol:$,trail:·,tab:>·
 "set statusline=%f\ \|%{&ff}\|\ %h%m%r%w%=%-14.(%l,%c%V%)\ %P
 set laststatus=2
-set tags+=~/.vim/tags/rails-tags
 
 set autoindent
 set smartindent
@@ -128,13 +131,17 @@ set textwidth=80
 set linebreak
 
 set foldenable
-set foldmethod=manual
+set foldmethod=expr
+set foldexpr=getline(v:lnum)=~'^\\s\\+#'  " fold comments
 set foldopen-=undo      " don't open folds when you undo stuff
+
+highlight Folded ctermfg=darkgray ctermbg=none
+highlight search ctermfg=black ctermbg=yellow
 
 autocmd FileType c,h,cpp,hpp setl cindent ts=4 sts=4 sw=4 noet lcs+=tab:\ \ 
 autocmd FileType asm setl ts=8 sts=8 sw=8 noet lcs+=tab:\ \ 
 autocmd FileType go setl ts=4 sts=4 sw=4 noet lcs+=tab:\ \ 
-autocmd FileType python setl ts=3 sts=3 sw=3
+autocmd FileType python setl ts=4 sts=4 sw=4
 autocmd FileType make,automake setl ts=4 sts=4 sw=4 noet lcs+=tab:\ \ 
 autocmd BufRead *.clj let b:delimitMate_quotes="\""
 autocmd BufRead *irb-interactive* setl ft=ruby
@@ -147,10 +154,10 @@ nnoremap <silent> <C-L> :nohls<cr>
 
 if has("gui_running")
   colorscheme railscasts
+  highlight Folded guifg=#333333 guibg=#2B2B2B
   set guioptions=ace
   set guicursor+=a:blinkon0 " disable blinking cursor
-  set guifont=Menlo:h14
-  "set guifont=Consolas:h14
+  set guifont=Monaco:h13
   autocmd VimResized * wincmd =
 endif
 
