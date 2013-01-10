@@ -97,10 +97,10 @@ set title
 set titleold=
 set ruler
 set number
-set lazyredraw
+"set lazyredraw
 set backspace=2        " indent,eol,start
 set whichwrap+=<,>,h,l
-set shortmess=aTs      " see :help shortmess
+set shortmess=aTsI     " see :help shortmess
 set noerrorbells
 set visualbell
 set scrolloff=3
@@ -133,7 +133,10 @@ set linebreak
 set foldenable
 set foldmethod=expr
 set foldexpr=getline(v:lnum)=~'^\\s\\+#'  " fold comments
+set foldminlines=4
 set foldopen-=undo      " don't open folds when you undo stuff
+
+set virtualedit=block
 
 highlight Folded ctermfg=darkgray ctermbg=none
 highlight search ctermfg=black ctermbg=yellow
@@ -151,6 +154,14 @@ nmap Y y$
 nmap Q <nop>
 nmap K <nop>
 nnoremap <silent> <C-L> :nohls<cr>
+" avoid cursor jumping around when joining lines
+nnoremap J mzJ`z
+
+" center cursor in the middle of the screen when jumping
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap } }zz
+nnoremap { {zz
 
 if has("gui_running")
   colorscheme railscasts
