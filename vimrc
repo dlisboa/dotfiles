@@ -65,6 +65,11 @@ let g:CommandTMaxHeight = 10
 
 Bundle 'Lokaltog/vim-easymotion'
 
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "honza/snipmate-snippets"
+Bundle 'garbas/vim-snipmate'
+
 filetype plugin indent on
 syntax on
 
