@@ -8,10 +8,8 @@ set nocompatible
 
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#rc()
 
-let mapleader=","
-
+call vundle#begin()
 Plugin 'gmarik/vundle'
 Plugin 'ervandew/supertab'
 Plugin 'kien/ctrlp.vim'
@@ -26,6 +24,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'edsono/vim-matchit'
 Plugin 'chriskempson/base16-vim'
 Plugin 'Lokaltog/vim-powerline'
+call vundle#end()
 
 filetype plugin indent on
 syntax on
@@ -78,6 +77,13 @@ set virtualedit=block
 
 set background=dark
 colorscheme base16-default
+
+if has('gui_running')
+  set guioptions=
+  set guifont=Menlo:h12
+  set linespace=2
+endif
+
 hi LineNr ctermbg=0
 hi VertSplit ctermbg=0 ctermfg=7
 hi MatchParen ctermbg=4 ctermfg=7
@@ -85,5 +91,7 @@ hi MatchParen ctermbg=4 ctermfg=7
 au FileType c,h set ts=4 sts=4 sw=4 noet listchars=eol:$,trail:·,tab:\ \ 
 au FileType go set ts=8 sts=8 sw=8 noet listchars=eol:$,trail:·,tab:\ \ 
 au BufRead irb-interactive* set ft=ruby
+
+let mapleader=","
 
 nmap Y y$
