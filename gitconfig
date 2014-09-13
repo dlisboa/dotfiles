@@ -1,0 +1,7 @@
+[user]
+  name = Diogo Lisboa
+  email = diogoslisboa@gmail.com
+
+[alias]
+  st = status
+  ci = commit
