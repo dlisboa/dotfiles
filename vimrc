@@ -53,7 +53,6 @@ set backspace=2        " indent,eol,start
 set whichwrap+=<,>,h,l
 set shortmess=aTsI     " see :help shortmess
 set noerrorbells
-set visualbell
 set scrolloff=3
 set sidescroll=3
 
@@ -87,13 +86,6 @@ set virtualedit=block
 set t_Co=256
 set background=dark
 colorscheme Tomorrow-Night
-
-if has('gui_running')
-  set guioptions=
-  set guifont=Menlo\ 12
-  set linespace=2
-  set vb t_vb=
-endif
 
 au FileType c,h set ts=4 sts=4 sw=4 noet listchars=eol:$,trail:·,tab:\ \ 
 au FileType go set ts=8 sts=8 sw=8 noet listchars=eol:$,trail:·,tab:\ \ 
