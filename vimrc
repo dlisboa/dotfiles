@@ -23,7 +23,6 @@ Plugin 'tpope/vim-endwise'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-markdown'
 Plugin 'pangloss/vim-javascript'
-Plugin 'klen/python-mode'
 Plugin 'othree/html5.vim'
 Plugin 'tpope/vim-commentary'
 Plugin 'chriskempson/base16-vim'
@@ -96,3 +95,15 @@ let mapleader=','
 nmap Y y$
 nmap <silent><C-l> :nohls<cr>
 nmap <silent><C-n> :tag<cr>
+
+function! RenameFile()
+  let old_name = expand('%')
+  let new_name = input('New file name: ', expand('%'))
+  if new_name != '' && new_name != old_name
+    exec ':saveas ' . new_name
+    exec ':bwipeout #'
+    exec ':silent !rm ' . old_name
+    redraw!
+  endif
+endfunction
+map <leader>m :call RenameFile()<cr>
