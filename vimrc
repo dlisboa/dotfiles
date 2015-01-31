@@ -25,6 +25,7 @@ Plugin 'tpope/vim-markdown'
 Plugin 'pangloss/vim-javascript'
 Plugin 'othree/html5.vim'
 Plugin 'tpope/vim-commentary'
+Plugin 'vim-scripts/Align'
 Plugin 'chriskempson/base16-vim'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'sirver/ultisnips'
@@ -86,9 +87,18 @@ set t_Co=256
 set background=dark
 colorscheme Tomorrow-Night
 
-au FileType c,h set ts=4 sts=4 sw=4 noet listchars=eol:$,trail:·,tab:\ \ 
-au FileType go set ts=8 sts=8 sw=8 noet listchars=eol:$,trail:·,tab:\ \ 
-au BufRead irb-interactive* set ft=ruby
+hi SpellBad cterm=underline ctermbg=none ctermfg=196
+hi SpellCap cterm=underline ctermbg=none ctermfg=45
+hi SpellRare cterm=underline ctermbg=none ctermfg=200
+hi SpellLocal cterm=underline ctermbg=none ctermfg=36
+
+autocmd FileType c,cpp set ts=4 sts=4 sw=4 noet
+autocmd FileType c,cpp set listchars=eol:$,trail:·,tab:\ \ 
+autocmd FileType c,cpp set cinoptions=(0:0l1t0  " :help cinoptions-values
+autocmd FileType c,cpp set commentstring=//%s
+
+autocmd FileType go set ts=8 sts=8 sw=8 noet listchars=eol:$,trail:·,tab:\ \ 
+autocmd BufRead irb-interactive* set ft=ruby
 
 let mapleader=','
 
@@ -107,3 +117,5 @@ function! RenameFile()
   endif
 endfunction
 map <leader>m :call RenameFile()<cr>
+
+let g:syntastic_always_populate_loc_list = 1
