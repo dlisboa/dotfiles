@@ -1,4 +1,5 @@
 # Top row (unshifted)
+<Multi_key> <grave> <a>			: "à"   agrave # LATIN SMALL LETTER A WITH GRAVE
 <Multi_key> <1>				: "¹"   onesuperior # SUPERSCRIPT ONE
 <Multi_key> <2>				: "²"   twosuperior # SUPERSCRIPT TWO
 <Multi_key> <3>				: "£"   sterling # POUND SIGN
@@ -13,6 +14,7 @@
 <Multi_key> <equal>			: "≠"   notequal # NOT EQUAL TO
 
 # Top row (shifted)
+<Multi_key> <asciitilde> <a>		: "ã" atilde
 # <Multi_key> <exclam>			: # do nothing
 <Multi_key> <at>			: "€"   EuroSign # EURO SIGN
 # <Multi_key> <numbersign>		: # do nothing
@@ -120,8 +122,7 @@
 
 
 # Lines below are from the en_US.UTF-8 default Compose file
-
-# Spacing versions of dead accents
+<dead_grave> <a>			: "à"   agrave # LATIN SMALL LETTER A WITH GRAVE
 <dead_tilde> <space>			: "~"	asciitilde # TILDE
 <dead_tilde> <dead_tilde>		: "~"	asciitilde # TILDE
 <dead_acute> <space>			: "'"	apostrophe # APOSTROPHE
