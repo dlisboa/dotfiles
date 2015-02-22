@@ -1,0 +1,141 @@
+# Top row (unshifted)
+<Multi_key> <1>				: "¹"   onesuperior # SUPERSCRIPT ONE
+<Multi_key> <2>				: "²"   twosuperior # SUPERSCRIPT TWO
+<Multi_key> <3>				: "£"   sterling # POUND SIGN
+<Multi_key> <4>				: "¢"   cent # CENT SIGN
+# <Multi_key> <5>			: # do nothing
+# <Multi_key> <6>			: # do nothing
+# <Multi_key> <7>			: # do nothing
+# <Multi_key> <8>			: # do nothing
+<Multi_key> <9>				: "ª"   ordfeminine # FEMININE ORDINAL INDICATOR
+<Multi_key> <0>				: "°"   degree # DEGREE SIGN
+<Multi_key> <minus>			: "–"   U2013 # EN DASH
+<Multi_key> <equal>			: "≠"   notequal # NOT EQUAL TO
+
+# Top row (shifted)
+# <Multi_key> <exclam>			: # do nothing
+<Multi_key> <at>			: "€"   EuroSign # EURO SIGN
+# <Multi_key> <numbersign>		: # do nothing
+# <Multi_key> <dollar>			: # do nothing
+# <Multi_key> <percent>			: # do nothing
+# <Multi_key> <asciicircum>		: # do nothing
+# <Multi_key> <ampersand>		: # do nothing
+<Multi_key> <asterisk>			: "º"   masculine # MASCULINE ORDINAL INDICATOR
+<Multi_key> <parenleft>			: "·"   periodcentered # MIDDLE DOT
+# <Multi_key> <parenright>		: # do nothing
+<Multi_key> <underscore>		: "—"   U2014 # EM DASH
+<Multi_key> <plus>			: "±"   plusminus # PLUS-MINUS SIGN
+
+# First row (unshifted)
+# <Multi_key> <q>			: # do nothing
+# <Multi_key> <w>			: # do nothing
+# <Multi_key> <e>			: # do nothing
+<Multi_key> <e> <e>			: "é" eacute
+<Multi_key> <e> <a>			: "á" aacute
+<Multi_key> <e> <i>			: "í" iacute
+<Multi_key> <e> <o>			: "ó" oacute
+<Multi_key> <e> <u>			: "ú" uacute
+<Multi_key> <r>				: "®"   registered # REGISTERED SIGN
+# <Multi_key> <t>			: # do nothing
+# <Multi_key> <y>			: # do nothing
+# <Multi_key> <u>			: # do nothing
+<Multi_key> <u> <u>			: "ü"   udiaeresis # LATIN LETTER U WITH DIAERESIS
+# <Multi_key> <i>			: # do nothing
+<Multi_key> <i> <e>			: "ê" ecircumflex
+<Multi_key> <i> <o>			: "ô" ocircumflex
+# <Multi_key> <o>			: # do nothing
+<Multi_key> <p>				: "π"   U03C0    # GREEK SMALL LETTER PI
+<Multi_key> <bracketleft>		: "“"   U201c # LEFT DOUBLE QUOTATION MARK
+<Multi_key> <bracketright>		: "‘"   U2018 # LEFT SINGLE QUOTATION MARK
+# <Multi_key> <backslash>		: # do nothing
+
+# First row (shifted)
+# <Multi_key> <Q>			: # do nothing
+# <Multi_key> <W>			: # do nothing
+# <Multi_key> <E>			: # do nothing
+# <Multi_key> <R>			: # do nothing
+# <Multi_key> <T>			: # do nothing
+# <Multi_key> <Y>			: # do nothing
+<Multi_key> <U>				: "¨"   diaeresis # DIAERESIS
+<Multi_key> <I>				: "ˆ"   U02c6 # MODIFIER LETTER CIRCUMFLEX ACCENT
+# <Multi_key> <O>			: # do nothing
+<Multi_key> <P>				: "Π"   U03A0    # GREEK CAPITAL LETTER PI
+<Multi_key> <braceleft>			: "”"   U201d # RIGHT DOUBLE QUOTATION MARK
+<Multi_key> <braceright>		: "’"   U2019 # RIGHT SINGLE QUOTATION MARK
+# <Multi_key> <bar>			: # do nothing
+
+# Second row (unshifted)
+# <Multi_key> <a>			: # do nothing
+# <Multi_key> <s>			: # do nothing
+# <Multi_key> <d>			: # do nothing
+# <Multi_key> <f>			: # do nothing
+<Multi_key> <g>				: "©"   copyright # COPYRIGHT SIGN
+# <Multi_key> <h>			: # do nothing
+# <Multi_key> <j>			: # do nothing
+# <Multi_key> <k>			: # do nothing
+<Multi_key> <l>				: "¬"   notsign # NOT SIGN
+<Multi_key> <semicolon>			: "…"   ellipsis # HORIZONTAL ELLIPSIS
+# <Multi_key> <apostrophe>		: # do nothing
+
+# Second row (shifted)
+# <Multi_key> <A>			: # do nothing
+# <Multi_key> <S>			: # do nothing
+# <Multi_key> <D>			: # do nothing
+# <Multi_key> <F>			: # do nothing
+# <Multi_key> <G>			: # do nothing
+# <Multi_key> <H>			: # do nothing
+# <Multi_key> <J>			: # do nothing
+# <Multi_key> <K>			: # do nothing
+# <Multi_key> <L>			: # do nothing
+# <Multi_key> <colon>			: # do nothing
+# <Multi_key> <quotedbl>		: # do nothing
+
+# Third row (unshifted)
+# <Multi_key> <z>			: # do nothing
+# <Multi_key> <x>			: # do nothing
+<Multi_key> <c>				: "ç" ccedilla
+# <Multi_key> <v>			: # do nothing
+# <Multi_key> <b>			: # do nothing
+# <Multi_key> <n>			: # do nothing
+<Multi_key> <n> <a>			: "ã" atilde
+<Multi_key> <n> <o>			: "õ" otilde
+<Multi_key> <n> <n>			: "ñ" ntilde
+<Multi_key> <m>				: "µ"   mu # MICRO SIGN
+<Multi_key> <comma>			: "≤"   U2264  # LESS-THAN OR EQUAL TO
+<Multi_key> <period>			: "≥"   U2265  # GREATER-THEN OR EQUAL TO
+<Multi_key> <slash>			: "÷"   division # DIVISION SIGN
+
+
+# Third row (shifted)
+# <Multi_key> <Z>			: # do nothing
+# <Multi_key> <X>			: # do nothing
+<Multi_key> <C>				: "Ç"   Ccedilla # LATIN CAPITAL LETTER C WITH CEDILLA
+# <Multi_key> <V>			: # do nothing
+# <Multi_key> <B>			: # do nothing
+# <Multi_key> <N>			: # do nothing
+# <Multi_key> <M>			: # do nothing
+# <Multi_key> <less>			: # do nothing
+# <Multi_key> <greater>			: # do nothing
+<Multi_key> <question>			: "¿"   questiondown # INVERTED QUESTION MARK
+
+
+# Lines below are from the en_US.UTF-8 default Compose file
+
+# Spacing versions of dead accents
+<dead_tilde> <space>			: "~"	asciitilde # TILDE
+<dead_tilde> <dead_tilde>		: "~"	asciitilde # TILDE
+<dead_acute> <space>			: "'"	apostrophe # APOSTROPHE
+<dead_acute> <dead_acute>		: "´"	acute # ACUTE ACCENT
+<Multi_key> <apostrophe> <apostrophe>	: "´"	acute # ACUTE ACCENT
+<dead_grave> <space>			: "`"	grave # GRAVE ACCENT
+<dead_grave> <dead_grave>		: "`"	grave # GRAVE ACCENT
+<dead_circumflex> <space>		: "^"	asciicircum # CIRCUMFLEX ACCENT
+<dead_circumflex> <dead_circumflex>	: "^"	asciicircum # CIRCUMFLEX ACCENT
+<dead_abovering> <space>		: "°"	degree # DEGREE SIGN
+<dead_abovering> <dead_abovering>	: "°"	degree # DEGREE SIGN
+<dead_macron> <space>			: "¯"	macron # MACRON
+<dead_macron> <dead_macron>		: "¯"	macron # MACRON
+<dead_diaeresis> <dead_diaeresis>	: "¨"	diaeresis # DIAERESIS
+<Multi_key> <quotedbl> <quotedbl>	: "¨"	diaeresis # DIAERESIS
+<dead_cedilla> <space>			: "¸"	cedilla # CEDILLA
+<dead_cedilla> <dead_cedilla>		: "¸"	cedilla # CEDILLA
