@@ -32,6 +32,8 @@ Plugin 'sirver/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'thinca/vim-quickrun'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'kurayama/systemd-vim-syntax'
+Plugin 'editorconfig/editorconfig-vim'
 call vundle#end()
 
 filetype plugin indent on
@@ -96,6 +98,8 @@ autocmd FileType c,cpp set ts=4 sts=4 sw=4 noet
 autocmd FileType c,cpp set listchars=eol:$,trail:·,tab:\ \ 
 autocmd FileType c,cpp set cinoptions=(0:0l1t0  " :help cinoptions-values
 autocmd FileType c,cpp set commentstring=//%s
+
+autocmd FileType asm set ts=8 sts=8 sw=8 noet nolist
 
 autocmd FileType go set ts=8 sts=8 sw=8 noet listchars=eol:$,trail:·,tab:\ \ 
 autocmd BufRead irb-interactive* set ft=ruby
