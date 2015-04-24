@@ -20,6 +20,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'Raimondi/delimitMate'
 Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-rails'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-markdown'
 Plugin 'pangloss/vim-javascript'
@@ -34,6 +35,7 @@ Plugin 'thinca/vim-quickrun'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'kurayama/systemd-vim-syntax'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'vim-scripts/a.vim'
 call vundle#end()
 
 filetype plugin indent on
