@@ -51,8 +51,10 @@
 <Multi_key> <u> <u>			: "ü"   udiaeresis # LATIN LETTER U WITH DIAERESIS
 <Multi_key> <u> <U>			: "Ü"   Udiaeresis # LATIN LETTER U WITH DIAERESIS
 # <Multi_key> <i>			: # do nothing
+<Multi_key> <i> <a>			: "â" acircumflex
 <Multi_key> <i> <e>			: "ê" ecircumflex
 <Multi_key> <i> <o>			: "ô" ocircumflex
+<Multi_key> <i> <A>			: "Â" Acircumflex
 <Multi_key> <i> <E>			: "Ê" Ecircumflex
 <Multi_key> <i> <O>			: "Ô" Ocircumflex
 # <Multi_key> <o>			: # do nothing
@@ -115,7 +117,7 @@
 <Multi_key> <n> <A>			: "Ã" Atilde
 <Multi_key> <n> <O>			: "Õ" Otilde
 <Multi_key> <n> <N>			: "Ñ" Ntilde
-<Multi_key> <n> <space>	: "~" tilde
+<Multi_key> <n> <space>			: "~" tilde
 <Multi_key> <m>				: "µ"   mu # MICRO SIGN
 <Multi_key> <comma>			: "≤"   U2264  # LESS-THAN OR EQUAL TO
 <Multi_key> <period>			: "≥"   U2265  # GREATER-THEN OR EQUAL TO
