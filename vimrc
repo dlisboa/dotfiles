@@ -11,7 +11,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
 runtime! macros/matchit.vim
-Plugin 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
+
 Plugin 'ervandew/supertab'
 Plugin 'kien/ctrlp.vim'
 Plugin 'vim-scripts/bufkill.vim'
@@ -24,7 +25,11 @@ Plugin 'tpope/vim-rails'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-markdown'
 Plugin 'pangloss/vim-javascript'
+Plugin 'klen/python-mode'
 Plugin 'othree/html5.vim'
+Plugin 'dsawardekar/ember.vim'
+Plugin 'mustache/vim-mustache-handlebars'
+" Plugin 'nono/vim-handlebars'
 Plugin 'tpope/vim-commentary'
 Plugin 'vim-scripts/Align'
 Plugin 'chriskempson/base16-vim'
@@ -91,6 +96,8 @@ set t_Co=256
 set background=dark
 colorscheme Tomorrow-Night
 
+set wildignore+=node_modules,bower_components
+
 hi SpellBad cterm=underline ctermbg=none ctermfg=196
 hi SpellCap cterm=underline ctermbg=none ctermfg=45
 hi SpellRare cterm=underline ctermbg=none ctermfg=200
@@ -104,6 +111,7 @@ autocmd FileType c,cpp set commentstring=//%s
 autocmd FileType asm set ts=8 sts=8 sw=8 noet nolist
 
 autocmd FileType go set ts=8 sts=8 sw=8 noet listchars=eol:$,trail:·,tab:\ \ 
+autocmd FileType python set nolist
 autocmd BufRead irb-interactive* set ft=ruby
 
 let mapleader=','
@@ -125,3 +133,4 @@ endfunction
 map <leader>m :call RenameFile()<cr>
 
 let g:syntastic_always_populate_loc_list = 1
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
