@@ -1,0 +1,15 @@
+source /usr/share/chruby/chruby.sh
+use_ruby() {
+  chruby $1
+}
+
+PATH_add ~/.bin
+PATH_add ~/.node_modules/bin
+PATH_add ~/.go/bin
+PATH_add ~/.local/bin
+PATH_add ~/.python/bin
+
+export GOPATH="$HOME/.go"
+export PYTHONPATH=$PYTHONPATH:/usr/lib/python2.7/site-packages:/usr/lib/python3.5/site-packages:$HOME/.python/lib/python3.5/site-packages
+
+use ruby 2.3.0
