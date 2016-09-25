@@ -9,10 +9,14 @@
   l = log --topo-order --pretty=format:'%C(yellow)%H%C(red)%d%n%C(reset)%C(blue)%an <%ae>%n%C(cyan)%aD (%ar)%C(reset)%n%+B'
   ll = log --topo-order --pretty=format:'%C(yellow)%h %C(blue)%an %C(reset)%s%C(red)%d %C(cyan)(%ar)'
 [core]
-  editor = vim
+  excludesfile = ~/.gitignore
 [grep]
   linenumber = true
 [status]
   showuntrackedfiles = all
 [push]
   default = simple
+[credential]
+	helper = /usr/lib/git-core/git-credential-gnome-keyring
+[github]
+	user = dlisboa
