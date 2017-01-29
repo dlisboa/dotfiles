@@ -1,0 +1,280 @@
+xkb_keymap {
+  xkb_keycodes "evdev" {
+    minimum = 8;
+    maximum = 255;
+
+    // Added for pc105 compatibility
+    <LSGT> = 94;
+
+    <TLDE> = 49;
+    <AE01> = 10;
+    <AE02> = 11;
+    <AE03> = 12;
+    <AE04> = 13;
+    <AE05> = 14;
+    <AE06> = 15;
+    <AE07> = 16;
+    <AE08> = 17;
+    <AE09> = 18;
+    <AE10> = 19;
+    <AE11> = 20;
+    <AE12> = 21;
+    <BKSP> = 22;
+
+    <TAB> = 23;
+    <AD01> = 24;
+    <AD02> = 25;
+    <AD03> = 26;
+    <AD04> = 27;
+    <AD05> = 28;
+    <AD06> = 29;
+    <AD07> = 30;
+    <AD08> = 31;
+    <AD09> = 32;
+    <AD10> = 33;
+    <AD11> = 34;
+    <AD12> = 35;
+    <BKSL> = 51;
+    alias <AC12> = <BKSL>;
+    <RTRN> = 36;
+
+    <CAPS> = 66;
+    <AC01> = 38;
+    <AC02> = 39;
+    <AC03> = 40;
+    <AC04> = 41;
+    <AC05> = 42;
+    <AC06> = 43;
+    <AC07> = 44;
+    <AC08> = 45;
+    <AC09> = 46;
+    <AC10> = 47;
+    <AC11> = 48;
+
+    <LFSH> = 50;
+    <AB01> = 52;
+    <AB02> = 53;
+    <AB03> = 54;
+    <AB04> = 55;
+    <AB05> = 56;
+    <AB06> = 57;
+    <AB07> = 58;
+    <AB08> = 59;
+    <AB09> = 60;
+    <AB10> = 61;
+    <RTSH> = 62;
+
+    <LALT> = 64;
+    <LCTL> = 37;
+    <SPCE> = 65;
+    <RCTL> = 105;
+    <RALT> = 108;
+    // Microsoft keyboard extra keys
+    <LWIN> = 133;
+    //<RWIN> = 134;
+    //<COMP> = 135;
+    //alias <MENU> = <COMP>;
+
+    <ESC> = 9;
+    <FK01> = 67;
+    <FK02> = 68;
+    <FK03> = 69;
+    <FK04> = 70;
+    <FK05> = 71;
+    <FK06> = 72;
+    <FK07> = 73;
+    <FK08> = 74;
+    <FK09> = 75;
+    <FK10> = 76;
+    <FK11> = 95;
+    <FK12> = 96;
+
+    <PRSC> = 107;
+
+    <INS> = 118;
+    <HOME> = 110;
+    <PGUP> = 112;
+    <DELE> = 119;
+    <END> = 115;
+    <PGDN> = 117;
+
+    <UP> = 111;
+    <LEFT> = 113;
+    <DOWN> = 116;
+    <RGHT> = 114;
+
+    //<FK13> = 191;
+    //<FK14> = 192;
+    //<FK15> = 193;
+    //<FK16> = 194;
+    //<FK17> = 195;
+    //<FK18> = 196;
+    //<FK19> = 197;
+    //<FK20> = 198;
+    //<FK21> = 199;
+    //<FK22> = 200;
+    //<FK23> = 201;
+    //<FK24> = 202;
+
+    // Fake keycodes for virtual keys
+    <LVL3> =   92;
+    <MDSW> =   203;
+    <ALT>  =   204;
+    <META> =   205;
+    <SUPR> =   206;
+    <HYPR> =   207;
+
+    indicator 1  = "Caps Lock";
+    //indicator 2  = "Num Lock";
+    //indicator 3  = "Scroll Lock";
+    //indicator 4  = "Compose";
+    //indicator 5  = "Kana";
+    indicator 6  = "Sleep";
+    indicator 7  = "Suspend";
+    indicator 8  = "Mute";
+    indicator 9  = "Misc";
+    //indicator 10 = "Mail";
+    indicator 11 = "Charging";
+
+    alias <ALGR> = <RALT>;
+
+    // For Brazilian ABNT2
+    //alias <KPPT> = <I129>;
+  };
+
+  xkb_types	{ include "complete"  };
+  xkb_compat	{ include "complete"  };
+
+  default  partial alphanumeric_keys modifier_keys
+  xkb_symbols "mac" {
+    name[Group1]= "English (Macintosh)";
+
+    key.type[group1]="FOUR_LEVEL";
+
+    key <ESC>  {	[ Escape,	Escape	]	};
+    key <BKSP> {	[ BackSpace,	BackSpace	]	};
+    key  <TAB> {	[ Tab,	ISO_Left_Tab	]	};
+    key <RTRN> {	[ Return,	Return	]	};
+    key <SPCE> {	[ space,	space	]	};
+
+    include "srvr_ctrl(fkey2vt)"
+
+    key <CAPS> {	[ Control_L		]	};
+
+    key <LFSH> {	[ Shift_L		]	};
+    key <LCTL> {	[ Control_L		]	};
+    key <LWIN> {	[ Super_L		]	};
+
+    key <RTSH> {	[ Shift_R		]	};
+    key <RCTL> {	[ Control_R		]	};
+
+    // Beginning of modifier mappings.
+    modifier_map Shift  { Shift_L, Shift_R };
+    // modifier_map Lock   { Caps_Lock };
+    modifier_map Control{ Control_L, Control_R };
+    modifier_map Mod4   { Super_L };
+
+    // Fake keys for virtual<->real modifiers mapping:
+    key <LVL3> {	[ ISO_Level3_Shift	]	};
+    key <MDSW> {	[ Mode_switch		]	};
+    modifier_map Mod5   { <LVL3>, <MDSW> };
+
+    key <ALT>  {	[ NoSymbol, Alt_L	]	};
+    include "altwin(meta_alt)"
+
+    key <META> {	[ NoSymbol, Meta_L	]	};
+    modifier_map Mod1   { <META> };
+
+    key <SUPR> {	[ NoSymbol, Super_L	]	};
+    modifier_map Mod4   { <SUPR> };
+
+    key <HYPR> {	[ NoSymbol, Hyper_L	]	};
+    modifier_map Mod4   { <HYPR> };
+    // End of modifier mappings.
+
+    //key <OUTP> { [ XF86Display ] };
+    //key <KITG> { [ XF86KbdLightOnOff ] };
+    //key <KIDN> { [ XF86KbdBrightnessDown ] };
+    //key <KIUP> { [ XF86KbdBrightnessUp ] };
+
+    key  <INS> {	[  Insert	]	};
+    key <HOME> {	[  Home	]	};
+    key <PGUP> {	[  Prior	]	};
+    key <DELE> {	[  Delete	]	};
+    key  <END> {	[  End	]	};
+    key <PGDN> {	[  Next	]	};
+
+    key   <UP> {	[  Up	]	};
+    key <LEFT> {	[  Left	]	};
+    key <DOWN> {	[  Down	]	};
+    key <RGHT> {	[  Right	]	};
+
+    //---
+
+    // Slightly improvised from http://homepage.mac.com/thgewecke/kblayout.jpg
+    key <LSGT> { [ section,	plusminus,	section,	plusminus ] };
+    key <TLDE> { [ grave,	asciitilde,	dead_grave,	dead_horn ] };
+    key <AE01> { [ 1,	exclam,	exclamdown,	U2044 ] };
+    key <AE02> { [ 2,	at,	trademark,	EuroSign ] };
+    key <AE03> { [ 3,	numbersign,	sterling,	U2039 ] };
+    key <AE04> { [ 4,	dollar,	cent,	U203A ] };
+    key <AE05> { [ 5,	percent,	infinity,	UFB01 ] };
+    key <AE06> { [ 6,	asciicircum,	section,	UFB02 ] };
+    key <AE07> { [ 7,	ampersand,	paragraph,	doubledagger ] };
+    key <AE08> { [ 8,	asterisk,	enfilledcircbullet,	degree ] };
+    key <AE09> { [ 9,	parenleft,	ordfeminine,	periodcentered ] };
+    key <AE10> { [ 0,	parenright,	masculine,	singlelowquotemark ] };
+    key <AE11> { [ minus,	underscore,	endash,	emdash ] };
+    key <AE12> { [ equal,	plus,	notequal,	plusminus ] };
+
+    key <AD01> { [ q,	Q,	oe,	OE ] };
+    key <AD02> { [ w,	W,	U2211,	doublelowquotemark ] };
+    key <AD03> { [ e,	E,	dead_acute,	acute ] };
+    key <AD04> { [ r,	R,	registered,	U2030 ] };
+    key <AD05> { [ t,	T,	dagger,	dead_caron ] };
+    key <AD06> { [ y,	Y,	yen,	onequarter ] };
+    key <AD07> { [ u,	U,	dead_diaeresis,		diaeresis ] };
+    key <AD08> { [ i,	I,	dead_circumflex,	U02C6 ] };
+    key <AD09> { [ o,	O,	oslash,	Ooblique ] };
+    key <AD10> { [ p,	P,	Greek_pi,	U220F ] };
+    key <AD11> { [ bracketleft,		braceleft,	leftdoublequotemark,	rightdoublequotemark ] };
+    key <AD12> { [ bracketright,	braceright,	leftsinglequotemark,	rightsinglequotemark ] };
+    key <BKSL> { [ backslash,	bar,	guillemotleft,	guillemotright ] };
+
+    key <AC01> { [ a,	A,	aring,	Aring ] };
+    key <AC02> { [ s,	S,	ssharp,	dead_stroke ] };
+    key <AC03> { [ d,	D,	partialderivative,	eth ] };
+    key <AC04> { [ f,	F,	function,	dead_hook ] };
+    key <AC05> { [ g,	G,	copyright,	dead_doubleacute ] };
+    key <AC06> { [ h,	H,	dead_abovedot,	dead_belowdot ] };
+    key <AC07> { [ j,	J,	U2206,	onehalf ] };
+    key <AC08> { [ k,	K,	dead_abovering,		UF8FF ] };
+    key <AC09> { [ l,	L,	notsign,	THORN ] };
+    key <AC10> { [ semicolon,	colon,	U2026,	thorn ] };
+    key <AC11> { [ apostrophe,	quotedbl,	ae,	AE ] };
+
+    key <AB01> { [ z,	Z,	Greek_OMEGA,	dead_cedilla ] };
+    key <AB02> { [ x,	X,	U2248,	dead_ogonek ] };
+    // unclear whether "approxeq" is 2248 or 2245
+    key <AB03> { [ c,	C,	ccedilla,	Ccedilla ] };
+    key <AB04> { [ v,	V,	squareroot,	U25CA ] };
+    key <AB05> { [ b,	B,	integral,	idotless ] };
+    key <AB06> { [ n,	N,	dead_tilde,	U02DC ] };
+    key <AB07> { [ m,	M,	mu,	threequarters ] };
+    key <AB08> { [ comma,	less,	lessthanequal,	dead_macron ] };
+    key <AB09> { [ period,	greater,	greaterthanequal,	dead_breve ] };
+    key <AB10> { [ slash,	question,	division,	questiondown ] };
+
+    key <PRSC> {
+      type[Group1]="ONE_LEVEL",
+      symbols[Group1] = [ ISO_Level3_Shift ]
+    };
+    replace key <LVL3> {
+      type[Group1]="ONE_LEVEL",
+      symbols[Group1] = [ ISO_Level3_Shift ]
+    };
+    modifier_map Mod5 { <LVL3> };
+  };
+
+  xkb_geometry	{ include "pc(pc105)" };
+};
