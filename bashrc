@@ -1,34 +1,13 @@
-#
-# ~/.bashrc
-#
-
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
-
-source /usr/share/git/completion/git-prompt.sh
-source /usr/share/chruby/chruby.sh
+eval "$(rbenv init -)"
 eval "$(direnv hook bash)"
-
-export LESS_TERMCAP_mb=$'\E[01;31m'
-export LESS_TERMCAP_md=$'\E[01;38;5;74m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m'
-export LESS_TERMCAP_so=$'\E[01;33m'
-export LESS_TERMCAP_ue=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[04;38;5;146m'
-
-export TERM=xterm-256color
-export EDITOR=vim
 
 alias ls='ls --color=auto'
 alias ll='ls -l'
 alias vi='vim'
+alias vim='nvim'
 alias gl='git l'
 alias gll='git ll'
 alias be='bundle exec'
 
-white="\[\e[01;37m\]"
-none="\[\e[0m\]"
-blue="\[\e[01;34m\]"
-green="\[\e[01;32m\]"
-export PS1="$white\h$none:$blue\W$green$none \$ "
+export EDITOR=vim
+export PS1="\h:\W\$ "
