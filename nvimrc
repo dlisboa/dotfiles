@@ -83,7 +83,7 @@ set title
 set titleold=
 set ruler
 set number
-set clipboard=unnamed
+set clipboard+=unnamedplus
 
 set backspace=2        " indent,eol,start
 set whichwrap+=<,>,h,l
@@ -135,7 +135,8 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
-let g:gitgutter_sign_column_always = 1
+" let g:gitgutter_sign_column_always = 1
+set signcolumn=yes
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'dark'
 
