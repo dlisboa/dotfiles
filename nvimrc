@@ -8,30 +8,18 @@ call plug#begin('~/.nvim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ervandew/supertab'
-Plug 'gregsexton/gitv', {'on': ['Gitv']}
-Plug 'haya14busa/incsearch.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'kana/vim-textobj-user'
-Plug 'majutsushi/tagbar'
-Plug 'mattn/gist-vim'
-Plug 'matze/vim-move'
 Plug 'mbbill/undotree'
 Plug 'mileszs/ack.vim'
 Plug 'morhetz/gruvbox'
-Plug 'sheerun/vim-polyglot'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/a.vim'
-Plug 'w0rp/ale'
-Plug 'xolox/vim-easytags'
-Plug 'xolox/vim-misc'
-
 " ruby
 Plug 'nelstrom/vim-textobj-rubyblock', { 'for': 'ruby' }
 Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }
@@ -66,6 +54,7 @@ set autoread
 set splitright
 set splitbelow
 set hidden
+set fillchars+=vert:│
 
 set timeoutlen=500
 set showmatch
@@ -92,6 +81,7 @@ set virtualedit=block
 let mapleader=','
 nmap Y y$
 nmap Q <nop>
+nmap <C-l> :nohls<cr>
 tnoremap <A-h> <C-\><C-n><C-w>h
 tnoremap <A-j> <C-\><C-n><C-w>j
 tnoremap <A-k> <C-\><C-n><C-w>k
@@ -102,34 +92,38 @@ nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
 " ack.vim
-if executable('rg')
-  let g:ackprg = 'rg --vimgrep'
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
 endif
 
 " airline
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'dark'
+let g:airline_skip_empty_sections = 1
+let g:airline_section_b = '%{airline#util#wrap(airline#extensions#branch#get_head(),0)}'
+let g:airline_section_x = ''
+let g:airline_section_y = ''
+let g:airline_section_z = '%3p%% %3l/%L:%3v'
 
-" gitgutter
-set signcolumn=yes
+" ctrlp
+let g:ctrlp_custom_ignore = 'node_modules\|public\/system\|public\/assets\|tmp'
 
 " gruvbox
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_italic = 1
 set background=dark
 colorscheme gruvbox
+hi GruvboxRedSign ctermbg=none
+hi GruvboxGreenSign ctermbg=none
+hi GruvboxBlueSign ctermbg=none
+hi GruvboxYellowSign ctermbg=none
+hi GruvboxPurpleSign ctermbg=none
+hi GruvboxAquaSign ctermbg=none
 
-" incsearch.vim
-let g:incsearch#auto_nohlsearch = 1
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-map n  <Plug>(incsearch-nohl-n)
-map N  <Plug>(incsearch-nohl-N)
-map *  <Plug>(incsearch-nohl-*)
-map #  <Plug>(incsearch-nohl-#)
-map g* <Plug>(incsearch-nohl-g*)
-map g# <Plug>(incsearch-nohl-g#)
+" gitgutter
+set updatetime=100
+let g:gitgutter_override_sign_column_highlight = 0
+hi SignColumn ctermbg=none
 
 " undotree
 if has("persistent_undo")
@@ -138,11 +132,23 @@ if has("persistent_undo")
 endif
 nnoremap <leader>u :UndotreeToggle<cr>
 
-" tagbar
-nnoremap <leader>t :TagbarToggle<cr>
+let g:simplified = 0
+function! Simplify()
+  if g:simplified
+    windo set number
+    windo set list
+    windo set signcolumn=auto
+    hi EndOfBuffer ctermfg=239
+    set laststatus=2
+    let g:simplified = 0
+  else
+    windo set nonumber
+    windo set nolist
+    windo set signcolumn=no
+    hi EndOfBuffer ctermfg=bg
+    set laststatus=0
+    let g:simplified = 1
+  endif
+endfunction
 
-" vim-easytags
-let g:easytags_async = 1
-
-" vim-move
-let g:move_key_modifier = 'C'
+map <leader>sim :call Simplify()<cr>
