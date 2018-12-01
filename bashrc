@@ -10,4 +10,4 @@ alias gll='git ll'
 alias be='bundle exec'
 
 export EDITOR=nvim
-export PS1="\h:\W\$ "
+export PS1="\W 🐔 "
