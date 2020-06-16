@@ -70,6 +70,11 @@
   (define-key evil-normal-state-map "gt" 'mac-next-tab-or-toggle-tab-bar)
   (define-key evil-normal-state-map "gT" 'mac-previous-tab-or-toggle-tab-bar))
 
+(define-key evil-normal-state-map (kbd "M-}") 'mac-next-tab-or-toggle-tab-bar)
+(define-key evil-normal-state-map (kbd "M-{") 'mac-previous-tab-or-toggle-tab-bar)
+(define-key evil-insert-state-map (kbd "M-{") 'mac-previous-tab-or-toggle-tab-bar)
+(define-key evil-insert-state-map (kbd "M-{") 'mac-previous-tab-or-toggle-tab-bar)
+
 (use-package evil-commentary
   :config
   (evil-commentary-mode))
@@ -90,8 +95,6 @@
 (use-package evil-vimish-fold
   :config
   (global-evil-vimish-fold-mode +1))
-
-(use-package evil-collection)
 
 ;; Projectile / Helm
 (use-package projectile
@@ -174,6 +177,9 @@
 (use-package ruby-end
   :defer t)
 
+(use-package bundler-mode
+  :defer t)
+
 (use-package rspec-mode
   :defer t
   :bind
@@ -199,10 +205,20 @@
     (load-theme 'doom-one t))
 
 (use-package doom-modeline
-  :init (doom-modeline-mode))
+  :config (doom-modeline-mode))
 
 (custom-set-faces
- '(doom-modeline-buffer-file ((t (:foreground "#bbc2cf" :weight bold))))
- '(line-number ((t (:background "default" :foreground "#5b6268"))))
- '(line-number-current-line ((t (:background "default" :foreground "#5b6268"))))
+; '(doom-modeline-buffer-file ((t (:foreground "#bbc2cf" :weight bold))))
+; '(line-number ((t (:background "default" :foreground "#5b6268"))))
+; '(line-number-current-line ((t (:background "default" :foreground "#5b6268"))))
  '(minibuffer-prompt ((t (:background "#282c34" :foreground "#51afef" :weight bold)))))
+
+(use-package markdown-mode
+  :defer t)
+
+(use-package dockerfile-mode
+  :defer t)
+
+(use-package evil-collection
+  :config
+  (evil-collection-init))
