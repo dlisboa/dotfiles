@@ -66,7 +66,9 @@
   (evil-split-window-below t)
   (evil-vsplit-window-right t)
   :config
-  (evil-mode +1))
+  (evil-mode +1)
+  (define-key evil-normal-state-map "gt" 'mac-next-tab-or-toggle-tab-bar)
+  (define-key evil-normal-state-map "gT" 'mac-previous-tab-or-toggle-tab-bar))
 
 (use-package evil-commentary
   :config
@@ -168,13 +170,9 @@
 
 (use-package robe
   :defer t)
-  ;; :init
-  ;; (add-hook 'ruby-mode-hook #'robe-mode))
 
 (use-package ruby-end
   :defer t)
-  ;; :init
-  ;; (add-hook 'ruby-mode-hook #'ruby-end-mode))
 
 (use-package rspec-mode
   :defer t
