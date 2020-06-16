@@ -142,13 +142,11 @@
 
 (use-package clojure-mode
   :defer t
+  :bind
+  (:map evil-leader--default-map
+        ("ji" . 'cider-jack-in))
   :config
-  (eldoc-mode))
-
-(use-package cider
-  :defer t
-  :config
-  (evil-leader/set-key "ji" 'cider-jack-in)
+  (eldoc-mode)
   (evil-leader/set-key-for-mode 'clojure-mode
     "ee" 'cider-eval-sexp-at-point
     "el" 'cider-eval-last-sexp
@@ -160,6 +158,9 @@
     "rf" 'cider-test-rerun-failed-tests
     "rn" 'cider-test-run-ns-tests
     "rp" 'cider-test-run-project-tests))  
+
+(use-package cider
+  :defer t)
 
 (use-package paren-face
   :config
