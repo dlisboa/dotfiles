@@ -1,35 +1,58 @@
+;; -*- mode: emacs-lisp -*-
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives
+             '("gnu" . "https://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives
+             '("org" . "http://orgmode.org/elpa/"))
+
 (package-initialize)
 
-(unless (package-installed-p 'use-package)
+(when (not (package-installed-p 'use-package))
+  (package-refresh-contents)
   (package-install 'use-package))
 
 (require 'use-package)
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
+
 (use-package auto-package-update
   :config
   (setq auto-package-update-delete-old-versions t)
   (setq auto-package-update-hide-results t)
   (auto-package-update-maybe))
 
+(use-package auto-compile
+  :config (auto-compile-on-load-mode))
+(setq load-prefer-newer t)
+
+(use-package exec-path-from-shell)
+(exec-path-from-shell-initialize)
+
 (setq custom-file "~/.emacs.d/custom.el")
+(setq default-directory "~/")
 
 (custom-set-variables
- '(fill-column 80)
- '(line-spacing 0.12)
- '(indent-tabs-mode nil)
- '(column-number-mode t)
- '(confirm-kill-processes nil)
- '(frame-title-format "%f" t)
- '(inhibit-startup-screen t)
- '(make-backup-files nil)
  '(auto-save-default nil)
+ '(column-number-mode t)
+ '(compilation-scroll-output t)
+ '(confirm-kill-processes nil)
+ '(fill-column 80)
+ '(frame-title-format "%f" t)
+ '(gc-cons-threshold 20000000)
+ '(indent-tabs-mode nil)
+ '(inhibit-startup-screen t)
+ '(line-spacing 0.2)
+ '(mac-command-modifier 'meta)
+ '(make-backup-files nil)
+ '(ns-right-alternate-modifier 'none)
+ '(read-process-output-max (* 10 1024 1024)) ; 10 MiB
  '(require-final-newline nil)
  '(ring-bell-function (quote ignore))
  '(truncate-lines t))
+
+(set-fontset-font t 'symbol (font-spec :family "Apple Color Emoji") nil 'prepend)
 
 (tool-bar-mode -1) ; no tool bar above
 (scroll-bar-mode -1) ; no scroll bar
@@ -41,6 +64,7 @@
 (blink-cursor-mode -1)
 (fset 'yes-or-no-p 'y-or-n-p)
 (global-hl-line-mode +1)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Evil
 (setq evil-want-keybinding nil)
@@ -52,11 +76,41 @@
   (global-evil-leader-mode))
 
 (evil-leader/set-key-for-mode 'emacs-lisp-mode
-    "el" 'eval-last-sexp
-    "ep" 'eval-print-last-sexp
-    "ed" 'eval-defun
-    "er" 'eval-region
-    "eb" 'eval-buffer)
+  "el" 'eval-last-sexp
+  "ep" 'eval-print-last-sexp
+  "ed" 'eval-defun
+  "er" 'eval-region
+  "eb" 'eval-buffer)
+
+(defun other-window/scroll-down ()
+  (interactive)
+  (other-window 1)
+  (evil-scroll-line-down 1)
+  (other-window 1))
+
+(defun other-window/scroll-up ()
+  (interactive)
+  (other-window 1)
+  (evil-scroll-line-up 1)
+  (other-window 1))
+
+(defun other-window/page-down ()
+  (interactive)
+  (other-window 1)
+  (evil-scroll-page-down 1)
+  (other-window 1))
+
+(defun other-window/page-up ()
+  (interactive)
+  (other-window 1)
+  (evil-scroll-page-up 1)
+  (other-window 1))
+
+
+(defun other-window/quit ()
+  (interactive)
+  (other-window 1)
+  (quit-window))
 
 (use-package evil
   :custom
@@ -67,13 +121,11 @@
   (evil-vsplit-window-right t)
   :config
   (evil-mode +1)
-  (define-key evil-normal-state-map "gt" 'mac-next-tab-or-toggle-tab-bar)
-  (define-key evil-normal-state-map "gT" 'mac-previous-tab-or-toggle-tab-bar))
-
-(define-key evil-normal-state-map (kbd "M-}") 'mac-next-tab-or-toggle-tab-bar)
-(define-key evil-normal-state-map (kbd "M-{") 'mac-previous-tab-or-toggle-tab-bar)
-(define-key evil-insert-state-map (kbd "M-{") 'mac-previous-tab-or-toggle-tab-bar)
-(define-key evil-insert-state-map (kbd "M-{") 'mac-previous-tab-or-toggle-tab-bar)
+  (define-key evil-window-map (kbd "C-e") 'other-window/scroll-down)
+  (define-key evil-window-map (kbd "C-y") 'other-window/scroll-up)
+  (define-key evil-window-map (kbd "C-d") 'other-window/page-down)
+  (define-key evil-window-map (kbd "C-u") 'other-window/page-up)
+  (define-key evil-window-map (kbd "C-q") 'other-window/page-up))
 
 (use-package evil-commentary
   :config
@@ -100,10 +152,9 @@
 (use-package projectile
   :after
   (evil-leader)
-  :init
-  (setq
-   projectile-project-search-path '("~/code/")
-   projectile-sort-order 'recently-active)
+  :custom
+  (projectile-project-search-path '("~/code/"))
+  (projectile-sort-order 'recently-active)
   :bind
   (:map evil-leader--default-map
         ("p" . 'projectile-command-map))
@@ -115,10 +166,12 @@
   (:map evil-leader--default-map
         ("b" . 'helm-buffers-list)))
 
-(use-package helm-ag)
+(use-package helm-ag
+  :after (helm))
 
 (use-package helm-projectile
-  :config
+  :after (helm projectile)
+  :init
   (helm-projectile-on))
 
 ;; Git
@@ -151,7 +204,6 @@
   (:map evil-leader--default-map
         ("ji" . 'cider-jack-in))
   :config
-  (eldoc-mode)
   (evil-leader/set-key-for-mode 'clojure-mode
     "ee" 'cider-eval-sexp-at-point
     "el" 'cider-eval-last-sexp
@@ -162,7 +214,7 @@
     "rr" 'cider-test-rerun-test
     "rf" 'cider-test-rerun-failed-tests
     "rn" 'cider-test-run-ns-tests
-    "rp" 'cider-test-run-project-tests))  
+    "rp" 'cider-test-run-project-tests))
 
 (use-package cider
   :defer t)
@@ -177,7 +229,10 @@
 (use-package ruby-end
   :defer t)
 
-(use-package bundler-mode
+(use-package bundler
+  :defer t)
+
+(use-package projectile-rails
   :defer t)
 
 (use-package rspec-mode
@@ -187,6 +242,10 @@
         ("rt" . 'rspec-verify-single)
         ("rr" . 'rspec-run-last-failed)
         ("rb" . 'rspec-verify)))
+
+(use-package inf-ruby
+  :config
+  (add-hook 'rspec-compilation-mode-hook 'inf-ruby-switch-from-compilation))
 
 (use-package neotree
   :custom
@@ -198,20 +257,15 @@
   :config
   (evil-leader/set-key "t" 'neotree-toggle))
 
-(use-package doom-themes
-    :config 
-    (setq doom-themes-enable-bold t
-          doom-themes-enable-italic t)
-    (load-theme 'doom-one t))
-
 (use-package doom-modeline
-  :config (doom-modeline-mode))
+  :init (doom-modeline-mode 1))
 
-(custom-set-faces
-; '(doom-modeline-buffer-file ((t (:foreground "#bbc2cf" :weight bold))))
-; '(line-number ((t (:background "default" :foreground "#5b6268"))))
-; '(line-number-current-line ((t (:background "default" :foreground "#5b6268"))))
- '(minibuffer-prompt ((t (:background "#282c34" :foreground "#51afef" :weight bold)))))
+(use-package doom-themes
+  :custom
+  (doom-themes-enable-bold t)
+  (doom-themes-enable-italic t)
+  :init
+  (load-theme 'doom-one t))
 
 (use-package markdown-mode
   :defer t)
@@ -222,3 +276,30 @@
 (use-package evil-collection
   :config
   (evil-collection-init))
+
+(use-package org-bullets
+  :init
+  (add-hook 'org-mode-hook 'org-bullets-mode))
+
+(use-package restclient
+  :defer t)
+
+(use-package flycheck)
+(use-package lsp-mode
+  :hook (prog-mode . lsp-deferred)
+  :commands (lsp lsp-deferred)
+  :config
+  (define-key evil-normal-state-map (kbd "SPC") lsp-command-map))
+
+(use-package company
+  :config
+  (add-hook 'after-init-hook 'global-company-mode))
+
+(use-package company-lsp)
+
+(use-package lsp-ui
+  :custom
+  (lsp-ui-peek-enable t)
+  (lsp-log-io t)
+  (lsp-print-performance t)
+  (lsp-prefer-capf t))
